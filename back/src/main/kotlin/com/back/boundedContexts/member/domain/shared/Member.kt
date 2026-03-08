@@ -47,6 +47,12 @@ class Member(
     @field:Column(unique = true, nullable = false)
     var apiKey: String,
 ) : BaseTime(id) {
+    val name: String
+        get() = nickname
+
+    val isAdmin: Boolean
+        get() = username in setOf("system", "admin")
+
     val profileImgUrlOrDefault: String
         get() = "https://placehold.co/600x600?text=U_U"
 

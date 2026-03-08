@@ -43,7 +43,9 @@ class ApiV1AdmMemberControllerTest {
                 jsonPath("$.content[$index].id") { value(member.id) }
                 jsonPath("$.content[$index].createdAt") { value(startsWith(member.createdAt.toString().take(20))) }
                 jsonPath("$.content[$index].modifiedAt") { value(startsWith(member.modifiedAt.toString().take(20))) }
+                jsonPath("$.content[$index].isAdmin") { value(member.isAdmin) }
                 jsonPath("$.content[$index].username") { value(member.username) }
+                jsonPath("$.content[$index].name") { value(member.name) }
                 jsonPath("$.content[$index].nickname") { value(member.nickname) }
                 jsonPath("$.content[$index].profileImageUrl") { value(member.profileImgUrlOrDefault) }
             }
@@ -120,7 +122,9 @@ class ApiV1AdmMemberControllerTest {
                 jsonPath("$.id") { value(member.id) }
                 jsonPath("$.createdAt") { value(startsWith(member.createdAt.toString().take(20))) }
                 jsonPath("$.modifiedAt") { value(startsWith(member.modifiedAt.toString().take(20))) }
+                jsonPath("$.isAdmin") { value(member.isAdmin) }
                 jsonPath("$.username") { value(member.username) }
+                jsonPath("$.name") { value(member.name) }
                 jsonPath("$.nickname") { value(member.nickname) }
                 jsonPath("$.profileImageUrl") { value(member.profileImgUrlOrDefault) }
             }

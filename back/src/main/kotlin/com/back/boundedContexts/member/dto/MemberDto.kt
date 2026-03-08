@@ -7,6 +7,7 @@ data class MemberDto(
     val id: Int,
     val createdAt: Instant,
     val modifiedAt: Instant,
+    val isAdmin: Boolean,
     val name: String,
     val profileImageUrl: String,
 ) {
@@ -14,7 +15,8 @@ data class MemberDto(
         id = member.id,
         createdAt = member.createdAt,
         modifiedAt = member.modifiedAt,
-        name = member.nickname,
+        isAdmin = member.isAdmin,
+        name = member.name,
         profileImageUrl = member.profileImgUrlOrDefault,
     )
 }
