@@ -6615,8 +6615,11 @@ QueryDSL 로 동적 쿼리를 처리하고, `Persistable<Int>` + `SEQUENCE` 로 
 **CQRS**
 읽기/쓰기 모델을 분리하지 않는다. 동일한 JPA 엔티티가 읽기와 쓰기 모두에 쓰인다.
 
-**완전한 DDD 애그리거트**
-`Post` 와 `PostComment` 가 별도 애그리거트이지만, `post.findCommentById()` 처럼 부모에서 자식을 직접 조회한다. 순수한 DDD 라면 댓글 리포지토리로만 접근해야 한다.
+**DDD 경계 설계**
+`Post` 와 `PostComment` 는 현재 `post.findCommentById()` 형태로 부모 쪽에서 자식 조회를 수행한다.  
+`Repository` 가 있다는 사실만으로 곧바로 별도 애그리거트라고 단정할 수 없으며, 애그리거트 경계는 **생애주기, 일관성 경계, 트랜잭션 경계**로 정한다.  
+즉, 댓글을 Post와 강하게 묶어 관리한다는 의도가 크고 성능/확장 요구가 충돌하지 않는다면 이런 구성은 의도적으로 합리적일 수 있다.  
+반대로 댓글이 독립 규칙과 조회/갱신 시나리오가 많아지면 `CommentRepository` 기반 분리가 더 적합해진다.
 
 **테스트 분리**
 슬라이스 테스트(`@DataJpaTest`, `@WebMvcTest`) 없이 전부 `@SpringBootTest`. 빠른 테스트 피드백보다 실환경 근접성을 택했다.
