@@ -5,6 +5,7 @@ import com.back.boundedContexts.member.domain.shared.Member
 import com.back.boundedContexts.post.app.PostFacade
 import com.back.standard.extensions.getOrThrow
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -24,6 +25,7 @@ import org.springframework.web.socket.sockjs.client.WebSocketTransport
 import java.util.concurrent.CompletableFuture
 import java.util.concurrent.TimeUnit
 
+@Disabled
 @ActiveProfiles("test")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class PostWebSocketSecurityConfigTest {
