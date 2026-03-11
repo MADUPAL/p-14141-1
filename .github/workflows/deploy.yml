@@ -274,6 +274,7 @@ jobs:
               --restart unless-stopped \
               --network "${NET}" \
               -e TZ=Asia/Seoul \
+              -e SPRING_PROFILES_ACTIVE=prod \
               -v /tmp/.env:/app/.env:ro \
               "${IMAGE}"
 
